@@ -17,7 +17,11 @@ namespace MVCpractice.Controllers
         // GET: Albums
         public ActionResult Index()
         {
-            return View(db.Albums.ToList());
+            //get the modle
+            var albums = db.Albums.ToList();
+
+            //return the view
+            return View(albums);
         }
 
         // GET: Albums/Details/5
@@ -36,6 +40,7 @@ namespace MVCpractice.Controllers
         }
 
         // GET: Albums/Create
+        // return the view by default
         public ActionResult Create()
         {
             return View();
@@ -44,6 +49,7 @@ namespace MVCpractice.Controllers
         // POST: Albums/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // create the album when data is passed
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "AlbumID,Title,Price")] Album album)
